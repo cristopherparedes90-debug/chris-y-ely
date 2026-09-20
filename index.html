@@ -21,6 +21,10 @@
       width: 100vw; height: 100vh;
       pointer-events: none; z-index: 10;
     }
+#redStringCanvas {
+   width:100%
+   height:100%
+    }
     .header {
       min-height: 100vh; display: flex;
       flex-direction: column; justify-content: center;
@@ -74,8 +78,8 @@
       border: 1px solid #f0e6e6; text-align: center;
     }
     .photo-card img {
-      width: 100%; height: 320px;
-      object-fit: cover; border-radius: 2px;
+      width: 100%; height: 100%;
+      object-fit: contain; border-radius: 2px;
     }
     .photo-caption {
       font-family: 'Playfair Display', serif;
@@ -115,7 +119,7 @@
   <section class="header">
     <div class="date-badge">13 / 10 / 2023</div>
     <div class="main-card">
-      <img src="TE AMO.jpeg" alt="CHRIS y ELY">
+      <img src="TE AMO.JPEG" alt="CHRIS y ELY">
       <div class="names">CHRIS & ELY</div>
     </div>
   </section>
@@ -168,16 +172,31 @@
       <div class="photo-caption">LIMA Y LIMON</div>
     </div>
 <div class="photo-card">
+      <img src="SALIDA.jpeg" alt="CHUMADITA">
+      <div class="photo-caption">MOMENTOS ESPECIALES JUNTOS</div>
+    </div>
+<div class="photo-card">
       <img src="FELICIDAD.jpeg" alt="PLAYA">
       <div class="photo-caption">FELICIDAD</div>
     </div>
+<div class="photo-card">
+      <img src="BONITA.jpeg" alt="AQUEL DIA">
+      <div class="photo-caption">EL DIA EN QUE MI VIDA EMPEZÓ A ESCRIBIRSE DE UNA FORMA MUCHO MAS BONITA</div>
+    </div>
   </section>
 
-  <section class="qr-section">
-    <h3 style="font-family: 'Cinzel', serif; color: #8b2626; margin-bottom: 10px;">Tu Código QR de Regalo</h3>
-    <p style="font-size: 0.95rem; color: #666;">Escanea para abrir en cualquier momento</p>
-    <div id="qrcode"></div>
-  </section>
+ <section class="video-section" style="text-align: center; margin: 40px auto; max-width: 360px;">
+  <h3 style="font-family: 'Cinzel', serif; color: #8b2626; margin-bottom: 15px; font-size: 1.4rem;">
+    Nuestros Momentos
+  </h3>
+  
+  <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.15); background: #000;">
+    <video controls playsinline style="width: 100%; display: block; border-radius: 12px;">
+      <source src="VIDEO.mp4" type="video/mp4">
+      Tu navegador no soporta el reproductor de video.
+    </video>
+  </div>
+</section>
 
   <button class="music-btn" id="musicToggle">
     <i class="fas fa-music"></i>
@@ -212,6 +231,46 @@
       colorDark : "#8b2626",
       colorLight : "#ffffff"
     });
-  </script>
+<script>
+  const canvas = document.getElementById('redStringCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawRedString();
+  }
+
+  function drawRedString() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+
+    ctx.strokeStyle = '#b22222';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+
+    ctx.beginPath();
+    const centerX = canvas.width / 2;
+    const startY = 0;
+    const endY = canvas.height * Math.min(scrollPercent * 1.2, 1);
+
+    ctx.moveTo(centerX, startY);
+
+    for (let y = 0; y <= endY; y += 10) {
+      const x = centerX + Math.sin((y + scrollTop) * 0.015) * 20;
+      ctx.lineTo(x, y);
+    }
+
+    ctx.stroke();
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('scroll', drawRedString);
+  
+  resizeCanvas();
+</script>
 </body>
 </html>
