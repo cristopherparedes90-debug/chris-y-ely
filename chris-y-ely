@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Hilo Rojo de Nuestro Destino</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #fdf8f5;
+      color: #4a3b32;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+    #canvas-container {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none; z-index: 10;
+    }
+    .header {
+      min-height: 100vh; display: flex;
+      flex-direction: column; justify-content: center;
+      align-items: center; text-align: center;
+      padding: 2rem; position: relative;
+    }
+    .date-badge {
+      font-family: 'Cinzel', serif; font-size: 1.5rem;
+      letter-spacing: 4px; color: #b85b5b; margin-bottom: 2rem;
+    }
+    .main-card {
+      background: #ffffff; padding: 15px 15px 30px 15px;
+      box-shadow: 0 15px 35px rgba(184, 91, 91, 0.15);
+      border-radius: 4px; max-width: 360px; width: 100%;
+      transform: rotate(-2deg); transition: all 0.5s ease;
+      position: relative; border: 1px solid #f0d5d5;
+    }
+    .main-card img {
+      width: 100%; height: 380px;
+      object-fit: cover; border-radius: 2px;
+    }
+    .names {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 3.2rem; color: #8b2626; margin-top: 15px;
+    }
+    .story-section {
+      max-width: 650px; margin: 0 auto;
+      padding: 4rem 2rem; text-align: center;
+      position: relative; z-index: 20;
+    }
+    .legend-title {
+      font-family: 'Cinzel', serif; font-size: 1.8rem;
+      color: #8b2626; margin-bottom: 2rem; font-style: italic;
+    }
+    .poem-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; line-height: 2.2;
+      color: #5c4338; margin-bottom: 2rem;
+    }
+    .gallery-container {
+      max-width: 1000px; margin: 4rem auto;
+      padding: 0 1.5rem; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem; position: relative; z-index: 20;
+    }
+    .photo-card {
+      background: #ffffff; padding: 12px 12px 25px 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border-radius: 4px; transition: transform 0.4s ease;
+      border: 1px solid #f0e6e6; text-align: center;
+    }
+    .photo-card img {
+      width: 100%; height: 320px;
+      object-fit: cover; border-radius: 2px;
+    }
+    .photo-caption {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 1rem;
+      color: #7a5c50; margin-top: 12px;
+    }
+    .music-btn {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #8b2626; color: white; border: none;
+      box-shadow: 0 8px 20px rgba(139, 38, 38, 0.4);
+      cursor: pointer; z-index: 100; display: flex;
+      justify-content: center; align-items: center;
+      font-size: 1.4rem; transition: transform 0.3s;
+    }
+    .qr-section {
+      text-align: center; padding: 4rem 2rem;
+      background: #f7ebe6; border-top: 1px solid #ead0c8;
+      position: relative; z-index: 20;
+    }
+    #qrcode {
+      display: flex; justify-content: center;
+      margin: 20px 0;
+    }
+    #qrcode img {
+      border: 10px solid white; border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="canvas-container">
+<canvas id="redThreadCanvas"></canvas>
+  </div>
+
+  <section class="header">
+    <div class="date-badge">13 / 10 / 2023</div>
+    <div class="main-card">
+      <img src="TE AMO.JPEG" alt="CHRIS y ELY">
+      <div class="names">CHRIS & ELY</div>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <h2 class="legend-title">Una leyenda japonesa...</h2>
+    <p class="poem-text">
+      Dice que dos personas destinadas a encontrarse están unidas por un hilo rojo invisible.<br><br>
+      Puede estirarse, enredarse o perderse entre los caminos de la vida...<br><br>
+      <strong>pero nunca se rompe.</strong><br><br>
+      Me alegra que mi hilo rojo me haya llevado hasta...
+    </p>
+    <h1 style="font-family: 'Cinzel', serif; font-size: 4.5rem; color: #8b2626; margin-top: 2rem;">¡TI!</h1>
+    </section>
+       </p>
+       <h2 style="font-family: 'Cinzel', serif; font-size: 3.7rem; color: #8b2627; margin-top: 2rem;">¡ESPERO VOLVERTE A VER PRONTO MEINE LEIBE!</h2>
+     </section>
+
+  <section class="gallery-container">
+    <div class="photo-card">
+      <img src="COTOPAXI.JPEG" alt="COTOPAXI">
+      <div class="photo-caption">Nuestros momentos</div>
+    </div>
+    <div class="photo-card">
+      <img src="BAÑOS.JPEG" alt="Paseo en bici">
+      <div class="photo-caption">En cada rincón contigo</div>
+    </div>
+    <div class="photo-card">
+      <img src="BICIS.JPEG" alt="Aventura en bici">
+      <div class="photo-caption">Recorriendo caminos juntos</div>
+    </div>
+    <div class="photo-card">
+      <img src="COSITOS.JPEG" alt="YOU AND ME">
+      <div class="photo-caption">Días de desconexión</div>
+    </div>
+<div class="photo-card">
+      <img src="NAVIDAD.JPEG" alt="NAVIDAD">
+      <div class="photo-caption">TE AMO</div>
+    </div>
+<div class="photo-card">
+      <img src="MOMENTOS.JPEG" alt="TU Y YO">
+      <div class="photo-caption">TU Y YO</div>
+    </div>
+<div class="photo-card">
+      <img src="PARQUE.JPEG" alt="KISS">
+      <div class="photo-caption"><3</div>
+    </div>
+<div class="photo-card">
+      <img src="SANTO.JPEG" alt="MOMENTOS">
+      <div class="photo-caption">LIMA Y LIMON</div>
+    </div>
+<div class="photo-card">
+      <img src="FELICIDAD.JPEG" alt="PLAYA">
+      <div class="photo-caption">FELICIDAD</div>
+    </div>
+  </section>
+
+  <section class="qr-section">
+    <h3 style="font-family: 'Cinzel', serif; color: #8b2626; margin-bottom: 10px;">Tu Código QR de Regalo</h3>
+    <p style="font-size: 0.95rem; color: #666;">Escanea para abrir en cualquier momento</p>
+    <div id="qrcode"></div>
+  </section>
+
+  <button class="music-btn" id="musicToggle">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <audio id="bgMusic" loop>
+    <source src="Te amo.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Reproductor de Música
+    const musicBtn = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+      } else {
+        bgMusic.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Código QR Dinámico
+    new QRCode(document.getElementById("qrcode"), {
+      text: window.location.href,
+      width: 160,
+      height: 160,
+      colorDark : "#8b2626",
+      colorLight : "#ffffff"
+    });
+  </script>
+</body>
+</html>
