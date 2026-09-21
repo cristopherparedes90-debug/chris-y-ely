@@ -251,19 +251,19 @@
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
 
-    ctx.strokeStyle = '#b22222';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#c0392b'
+    ctx.lineWidth = 4
     ctx.lineCap = 'round';
 
     ctx.beginPath();
     const centerX = canvas.width / 2;
     const startY = 0;
-    const endY = canvas.height * Math.min(scrollPercent * 1.2, 1);
+    const endY = canvas.height * Math.min(scrollPercent * 1.5 +0.2, 1);
 
     ctx.moveTo(centerX, startY);
 
     for (let y = 0; y <= endY; y += 10) {
-      const x = centerX + Math.sin((y + scrollTop) * 0.015) * 20;
+      const x = centerX + Math.sin((y + scrollTop) * 0.012) * 25;
       ctx.lineTo(x, y);
     }
 
@@ -272,7 +272,8 @@
 
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('scroll', drawRedString);
-  
+  window.addEventListener('DOMContentLoaded', resizeCanvas);
+
   resizeCanvas();
 </script>
 </body>
