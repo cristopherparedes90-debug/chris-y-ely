@@ -282,5 +282,22 @@
   window.onload = resizeCanvas;
   resizeCanvas();
 </script>
+  <script>
+  const musicBtn = document.getElementById('music-btn');
+  const bgMusic = document.getElementById('bg-music');
+  let isPlaying = false;
+
+  musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.innerHTML = '🎵';
+      isPlaying = false;
+    } else {
+      bgMusic.play();
+      musicBtn.innerHTML = '⏸️';
+      isPlaying = true;
+    }
+  });
+</script>
 </body>
 </html>
