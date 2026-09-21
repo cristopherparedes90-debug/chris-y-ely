@@ -205,26 +205,35 @@
     <i class="fas fa-music"></i>
   </button>
 
-  <audio id="bg-music" loop preload="auto">
-  <source src="cancion.mp3" type="audio/mp3">
+ <audio id="bgMusic" loop preload="auto">
+  <source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
-  <script>
-    // Reproductor de Música
+<script>
+  // Reproductor de Música
+  window.addEventListener('DOMContentLoaded', () => {
     const musicBtn = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
 
-    musicBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-        musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-      } else {
-        bgMusic.play();
-        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      }
-      isPlaying = !isPlaying;
-    });
+    if (musicBtn && bgMusic) {
+      musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+        } else {
+          bgMusic.play().then(() => {
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          }).catch(err => {
+            alert('Asegúrate de que el archivo en GitHub se llame exactamente cancion.mp3');
+            console.error(err);
+          });
+        }
+        isPlaying = !isPlaying;
+      });
+    }
+  });
+</script>
 
     // Código QR Dinámico
     new QRCode(document.getElementById("qrcode"), {
