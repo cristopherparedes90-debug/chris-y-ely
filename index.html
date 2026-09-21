@@ -282,9 +282,10 @@
   resizeCanvas();
 </script>
 <script>
+  window.addEventListener('DOMContentLoaded',()=>{
   const musicBtn = document.getElementById('music-btn');
   const bgMusic = document.getElementById('bg-music');
-
+  if (musicBtn && bgMusic) { 
   musicBtn.addEventListener('click', () => {
     if (bgMusic.paused) {
       bgMusic.play().then(() => {
@@ -296,9 +297,10 @@
     } else {
       bgMusic.pause();
       musicBtn.innerHTML = '🎵';
+     }
+   });
     }
-  });
-</script>
+});
 </script>
 </body>
 </html>
