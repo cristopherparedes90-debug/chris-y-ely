@@ -283,22 +283,24 @@
   window.onload = resizeCanvas;
   resizeCanvas();
 </script>
-  <script>
+<script>
   const musicBtn = document.getElementById('music-btn');
   const bgMusic = document.getElementById('bg-music');
-  let isPlaying = false;
 
   musicBtn.addEventListener('click', () => {
-    if (isPlaying) {
+    if (bgMusic.paused) {
+      bgMusic.play().then(() => {
+        musicBtn.innerHTML = '⏸️';
+      }).catch(error => {
+        alert('No se pudo reproducir el audio. Verifica que el archivo Te Amo.mp3 esté subido correctamente a GitHub.');
+        console.error('Error de audio:', error);
+      });
+    } else {
       bgMusic.pause();
       musicBtn.innerHTML = '🎵';
-      isPlaying = false;
-    } else {
-      bgMusic.play();
-      musicBtn.innerHTML = '⏸️';
-      isPlaying = true;
     }
   });
+</script>
 </script>
 </body>
 </html>
